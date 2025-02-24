@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".code");
+const buttons = document.querySelectorAll(".code");
 
     buttons.forEach((button) => {
         button.addEventListener("click", function () {
@@ -46,4 +45,3 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-});
