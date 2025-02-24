@@ -11,25 +11,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 let outputBlock = document.createElement("pre");
                 let outputContent = document.createElement("code");
 
-                let language, codeText, outputText;
+                let language = "";
+                let codeText = "";
+                let outputText = "Hello, World!";
+
                 if (this.closest("#python")) {
                     language = "python";
                     codeText = `def greet(name):\n    return f"Hello, {name}!"\n\nprint(greet("World"))`;
-                    outputText = "Hello, World!";
                 } else if (this.closest("#javascript")) {
                     language = "javascript";
                     codeText = `function greet(name) {\n    return \`Hello, \${name}!\`;\n}\n\nconsole.log(greet("World"));`;
-                    outputText = "Hello, World!";
                 } else if (this.closest("#cplus")) {
                     language = "cpp";
                     codeText = `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    return 0;\n}`;
-                    outputText = "Hello, World!";
                 }
 
                 codeBlock.classList.add("example-code");
                 codeContent.classList.add(`language-${language}`);
                 outputBlock.classList.add("example-code");
-                outputContent.classList.add("language-none"); 
+                outputContent.classList.add("language-none");
 
                 codeContent.textContent = codeText;
                 outputContent.textContent = `Output:\n${outputText}`;
@@ -41,10 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 Prism.highlightElement(codeContent);
             } else {
-                existingCodeBlock.nextElementSibling.remove(); 
+                existingCodeBlock.nextElementSibling.remove();
                 existingCodeBlock.remove();
             }
         });
     });
 });
-
