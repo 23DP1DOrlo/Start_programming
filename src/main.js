@@ -6,13 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
             let existingCodeBlock = this.parentElement.querySelector(".example-code");
 
             if (!existingCodeBlock) {
-                // Создаём <pre> и <code> блоки
                 let codeBlock = document.createElement("pre");
                 let codeContent = document.createElement("code");
-                let outputBlock = document.createElement("pre"); // Для вывода
+                let outputBlock = document.createElement("pre");
                 let outputContent = document.createElement("code");
 
-                // Определяем язык программирования
                 let language, codeText, outputText;
                 if (this.closest("#python")) {
                     language = "python";
@@ -28,51 +26,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     outputText = "Hello, World!";
                 }
 
-                // Добавляем классы Prism.js
                 codeBlock.classList.add("example-code");
                 codeContent.classList.add(`language-${language}`);
                 outputBlock.classList.add("example-code");
-                outputContent.classList.add("language-none"); // Без подсветки
+                outputContent.classList.add("language-none"); 
 
-                // Заполняем кодом
                 codeContent.textContent = codeText;
                 outputContent.textContent = `Output:\n${outputText}`;
 
-                // Вставляем элементы
                 codeBlock.appendChild(codeContent);
                 outputBlock.appendChild(outputContent);
                 this.parentElement.appendChild(codeBlock);
                 this.parentElement.appendChild(outputBlock);
 
-                // Подсветка синтаксиса
                 Prism.highlightElement(codeContent);
             } else {
-                // Если уже есть, скрываем
-                existingCodeBlock.nextElementSibling.remove(); // Удаляем output
+                existingCodeBlock.nextElementSibling.remove(); 
                 existingCodeBlock.remove();
             }
         });
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const contactForm = document.getElementById("contact-form");
-
-    contactForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const firstName = document.getElementById("first-name").value;
-        const lastName = document.getElementById("last-name").value;
-        const phone = document.getElementById("phone").value;
-        const email = document.getElementById("email").value;
-
-        console.log("Form Submitted!");
-        console.log("First Name:", firstName);
-        console.log("Last Name:", lastName);
-        console.log("Phone:", phone);
-        console.log("Email:", email);
-
-        alert("Your request has been submitted! We will contact you soon.");
-        contactForm.reset();
-    });
-});
